@@ -1,0 +1,21 @@
+{
+    "parerOption": {
+       "ecmaVersion": 2019,
+       "sourceType": "module",
+       "ecmaFeattures": {
+           "jsx": true
+       }
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "extends": [
+        "exlint: recommended",
+        "plugin: react/recommended" 
+    ],
+    "plugins": [
+        "import",
+        "react-hooks"
+    ]
+}
