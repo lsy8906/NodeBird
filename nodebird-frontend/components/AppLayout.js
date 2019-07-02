@@ -1,15 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
-import { Menu, Input, Button } from 'antd';
-import Head from 'next/head';
+import PropTypes from 'prop-types';
+import { Menu, Input, Row, Col, Card, Avatar } from 'antd';
+import LoginForm from './LoginForm';
+
+const dummy = {
+    nickName: '이소미',
+    Post: [],
+    Followings: [],
+    Followers: [],
+    isLoggedIn: false,
+}
 
 const AppLayout = ({ children }) => {
     return (
         <>
-            <Head>
-                <title>NodeBird</title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.19.0/antd.css" />
-            </Head>
             <div>
                 <Menu mode="horizontal">
                     <Menu.Item key="home"><Link href="/"><a>노드버드</a></Link></Menu.Item>
@@ -18,11 +23,38 @@ const AppLayout = ({ children }) => {
                         <Input.Search enterButton  style={{ verticalAlign: 'middle' }}  />
                     </Menu.Item>
                 </Menu>
-                <Link href="/signup"><a><Button>회원가입</Button></a></Link>
-                {children}
+                <Row>
+                    <Col xs={24} md={6}>
+                        {dummy.isLoggedIn
+                        ?<Card
+                            actions={[
+                                <div key="twit">짹짹<br/>{dummy.Post.length}</div>,
+                                <div key="following">팔로잉<br/>{dummy.Followings.length}</div>,
+                                <div key="follower">팔로워<br/>{dummy.Followers.length}</div>,
+                            ]}
+                        >
+                            <Card.Meta
+                                avatar={<Avatar>{dummy.nickName[0]}</Avatar>}
+                                title={dummy.nickName}
+                            />
+                        </Card>
+                        :
+                        <LoginForm />}
+                    </Col>
+                    <Col xs={24} md={12}>
+                        {children}
+                    </Col>
+                    <Col xs={24} md={6}>
+
+                    </Col>
+                </Row>
             </div>
         </>
     )
+}
+
+AppLayout.propTypes = {
+    children: PropTypes.node,
 }
 
 export default AppLayout;
