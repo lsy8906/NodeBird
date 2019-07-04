@@ -1,19 +1,19 @@
-import React, { useCallback } from 'react';
-import { Button, Input, Form } from 'antd';
-import Link from 'next/link';
-import { useInput } from '../pages/signup';
+import React, { useCallback } from 'react'
+import { Button, Input, Form } from 'antd'
+import Link from 'next/link'
+import { useInput } from '../pages/signup'
 
 const LoginForm = () => {
-    const [id, onChangeId] = useInput('');
-    const [password, onChangePassword] = useInput('');
+    const [id, onChangeId] = useInput('')
+    const [password, onChangePassword] = useInput('')
     const onSubmitForm = useCallback((e) => {
-        e.preventDefault();
+        e.preventDefault()
         console.log({
             id, password,
-        });
-    }, [id, password]);
+        })
+    }, [id, password])
     return (
-        <Form onSubmit={onSubmitForm}>
+        <Form onSubmit={onSubmitForm} style={{ padding: 10}}>
             <div>
                 <label htmlFor="user-id">아이디</label>
                 <br />
@@ -32,4 +32,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm;
+export default LoginForm

@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
-import PropTypes from 'prop-types';
+import React, { useState, useCallback } from 'react'
+import { Form, Input, Button, Checkbox } from 'antd'
+import PropTypes from 'prop-types'
 
 const TextInput = ({ value }) => {
     return (
@@ -13,40 +13,40 @@ TextInput.propTypes = {
 }
 
 export const useInput = () => {
-    const [value, setter] = useState('');
+    const [value, setter] = useState('')
     const handler = useCallback((e) => {
-        setter(e.target.value);
-    }, []);
-    return [value, handler];
-};
+        setter(e.target.value)
+    }, [])
+    return [value, handler]
+}
 
 const SignUp = () => {
-    const [passwordCheck, setPasswordCheck] = useState('');
-    const [term, setTerm] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
-    const [termError, setTermError] = useState(false);
-    const [id, onChangeId] = useInput('');
-    const [nick, onChangeNick] = useInput('');
-    const [password, onChangePassword] = useInput('');
+    const [passwordCheck, setPasswordCheck] = useState('')
+    const [term, setTerm] = useState(false)
+    const [passwordError, setPasswordError] = useState(false)
+    const [termError, setTermError] = useState(false)
+    const [id, onChangeId] = useInput('')
+    const [nick, onChangeNick] = useInput('')
+    const [password, onChangePassword] = useInput('')
 
     const onSubmit = useCallback((e) => {
-        e.preventDefault();
+        e.preventDefault()
         if (password !== passwordCheck) {
-            return setPasswordError(true);
+            return setPasswordError(true)
         }
         if (!term) {
-            return setTermError(true);
+            return setTermError(true)
         }
-    }, [password, passwordCheck, term]);
+    }, [password, passwordCheck, term])
 
     const onChangePasswordCheck = useCallback((e) => {
-        setPasswordError(e.target.value !== password);
-        setPasswordCheck(e.target.value);
-    }, [password]);
+        setPasswordError(e.target.value !== password)
+        setPasswordCheck(e.target.value)
+    }, [password])
     const onChangeTerm = useCallback((e) => {
-        setTermError(false);
-        setTerm(e.target.checked);
-    }, []);
+        setTermError(false)
+        setTerm(e.target.checked)
+    }, [])
 
     return (
         <>
@@ -85,4 +85,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp;
+export default SignUp
