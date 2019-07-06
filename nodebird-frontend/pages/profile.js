@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, List, Card, Icon } from 'antd'
-import NicknameEditForm from '../components/NickNameEditForm';
+import NicknameEditForm from '../components/NickNameEditForm'
 
 const Profile = () => {
     return (
